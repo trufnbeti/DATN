@@ -22,13 +22,14 @@ namespace Platformer
         public void SaveData()
         {
             List<string> weaponNames = playerWeapons.GetPlayerWeaponNames();
-            if (weaponNames != null && weaponNames.Count > 0)
-                SaveSystem.SaveWeapons(weaponNames);
+            if (weaponNames != null && weaponNames.Count > 0) {
+                SaveSystem.Weapon = weaponNames;
+            }
         }
 
         public void LoadData()
         {
-            List<string> weaponNames = SaveSystem.LoadWeapons();
+            List<string> weaponNames = SaveSystem.Weapon;
             if (weaponNames != null)
             {
                 foreach (var name in weaponNames)

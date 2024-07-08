@@ -24,7 +24,7 @@ namespace Platformer
 
         private void Start()
         {
-            levelIndex = SaveSystem.LoadLevelIndex();
+            levelIndex = SaveSystem.Level;
             if(levelIndex > -1)
             {
                 continueButton.onClick.AddListener(() => sceneManagement.LoadSceneWithIndex(levelIndex));

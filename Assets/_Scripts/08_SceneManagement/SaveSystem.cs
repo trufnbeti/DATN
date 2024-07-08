@@ -12,62 +12,47 @@ namespace Platformer
         public static string playerWeaponsKey = "PlayerWeapons";
         public static string levelKey = "LevelKey";
         private static string saveDataKey = "saveDataKey";
-
-
-        public static void SaveGameData(int levelIndexToSave)
-        {
             
-            SaveLevel(levelIndexToSave);
+        public static void SaveGameData(int levelIndexToSave) {
+            Level = levelIndexToSave;
             PlayerPrefs.SetInt(saveDataKey, 1);
         }
 
-        private static void SaveLevel(int levelIndex)
-        {
-            PlayerPrefs.SetInt(levelKey, levelIndex);
+        public static int Level {
+            set => PlayerPrefs.SetInt(levelKey, value);
+            get {
+                if (IsSaveDataPreset())
+                    return PlayerPrefs.GetInt(levelKey);
+                return -1;
+            }
         }
 
-        public static int LoadLevelIndex()
-        {
-            if (IsSaveDataPreset())
-                return PlayerPrefs.GetInt(levelKey);
-            return -1;
+        public static List<string> Weapon {
+            set {
+                string data = JsonUtility.ToJson(new PlayerWeapons { playerWeapons = value });
+                PlayerPrefs.SetString(playerWeaponsKey, data);
+            }
+            get {
+                if (IsSaveDataPreset()) {
+                    string data = PlayerPrefs.GetString(playerWeaponsKey);
+                    if (data.Length > 0) {
+                        return JsonUtility.FromJson<PlayerWeapons>(data).playerWeapons;
+                    }
+                }
+                return null;
+            }
         }
-
+        
+        public static int Point {
+            set => PlayerPrefs.SetInt(pointsKey, value);
+            get => PlayerPrefs.GetInt(pointsKey);
+        }
+        
         private static bool IsSaveDataPreset()
         {
             return PlayerPrefs.GetInt(saveDataKey) == 1;
         }
-
-        public static void SaveWeapons(List<string> weaponNames)
-        {
-
-            string data = JsonUtility.ToJson(new PlayerWeapons { playerWeapons = weaponNames });
-            PlayerPrefs.SetString(playerWeaponsKey, data);
-        }
-        public static List<string> LoadWeapons()
-        {
-            if (IsSaveDataPreset())
-            {
-                string data = PlayerPrefs.GetString(playerWeaponsKey);
-                if (data.Length > 0)
-                {
-                    return JsonUtility.FromJson<PlayerWeapons>(data).playerWeapons;
-                }
-            }
-            return null;
-        }
-
         
-        public static void SavePoints(int amount)
-        {
-            PlayerPrefs.SetInt(pointsKey, amount);
-        }
-
-        public static int LoadPoints()
-        {
-            return PlayerPrefs.GetInt(pointsKey);
-        }
-
         public static void ResetSaveData()
         {
             PlayerPrefs.DeleteKey(pointsKey);

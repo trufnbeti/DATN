@@ -23,12 +23,12 @@ namespace Platformer
 
         public void SaveData()
         {
-            SaveSystem.SavePoints(Points);
+            SaveSystem.Point = Points;
         }
 
         public void LoadData()
         {
-            Points = SaveSystem.LoadPoints();
+            Points = SaveSystem.Point;
             OnPointsValueChange?.Invoke(Points);
         }
     }
