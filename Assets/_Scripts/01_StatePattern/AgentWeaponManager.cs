@@ -71,7 +71,7 @@ namespace Platformer
 
         public void AddWeaponData(WeaponData weaponData)
         {
-            if (weaponStorage.AddWeaponData(weaponData)==false)
+            if (!weaponStorage.AddWeaponData(weaponData))
             {
                 return;
             }
@@ -88,8 +88,9 @@ namespace Platformer
 
         public bool CanIUseWeapon(bool isGrounded)
         {
-            if (weaponStorage.WeaponCount <=0)
+            if (weaponStorage.WeaponCount <= 0) {
                 return false;
+            }
             return weaponStorage.GetCurrentWeapon().CanBeUsed(isGrounded);
         }
 

@@ -15,16 +15,6 @@ namespace Platformer.AI
         public event Action<Vector2> OnMovement;
         public event Action OnWeaponChange;
 
-        public void CallOnAttack()
-        {
-            OnAttack?.Invoke();
-        }
-
-        public void CallOnJumpPressed()
-        {
-            OnJumpPressed?.Invoke();
-        }
-
         public void CallOnMovement(Vector2 input)
         {
             OnMovement?.Invoke(input);
@@ -33,11 +23,6 @@ namespace Platformer.AI
         public void CallAttack()
         {
             OnAttack?.Invoke();
-        }
-
-        public void CallOnWeaponChange()
-        {
-            OnWeaponChange?.Invoke();
         }
     }
 }

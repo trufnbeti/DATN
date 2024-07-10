@@ -10,7 +10,7 @@ namespace Platformer
 
         public override bool CanBeUsed(bool isAgentGrounded)
         {
-            return isAgentGrounded == true;
+            return isAgentGrounded;
         }
 
         public override void PerformAttack(Agent agent, LayerMask hittableMask, Vector3 direction)

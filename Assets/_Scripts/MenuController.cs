@@ -12,7 +12,7 @@ namespace Platformer
             if(menuPanel.activeSelf == false || menuPanel.activeSelf == true && Time.timeScale == 0)
             {
                 Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-                menuPanel.SetActive(menuPanel.activeSelf == true ? false : true);
+                menuPanel.SetActive(!menuPanel.activeSelf);
             }
             
         }

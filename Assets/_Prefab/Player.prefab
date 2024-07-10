@@ -2567,6 +2567,10 @@ PrefabInstance:
       propertyPath: cubeCastYOffset
       value: -0.46
       objectReference: {fileID: 0}
+    - target: {fileID: 554722054970393890, guid: d6b8ce61d0c2de14a8f48d1658ed994a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 554722055149272400, guid: d6b8ce61d0c2de14a8f48d1658ed994a, type: 3}
       propertyPath: OnWeaponSwap.m_PersistentCalls.m_Calls.Array.size
       value: 1

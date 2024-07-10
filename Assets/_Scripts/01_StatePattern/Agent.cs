@@ -36,9 +36,9 @@ namespace Platformer
         //public WeaponData weaponData;
         public StateFactory stateFactory;
 
-        public bool IsGrounded { get => groundSensor.isGrounded; }
+        public bool IsGrounded => groundSensor.isGrounded;
 
-        public bool CanClimb { get => climbSensor.CanClimb; }
+        public bool CanClimb => climbSensor.CanClimb; 
 
         private Damagable damagable;
 
